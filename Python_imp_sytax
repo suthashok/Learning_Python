@@ -1,0 +1,531 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Change the datatypes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Series"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "s = pd.Series([\"8\", 6, \"7.5\", 3, \"0.9\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0    8.0\n",
+       "1    6.0\n",
+       "2    7.5\n",
+       "3    3.0\n",
+       "4    0.9\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pd.to_numeric(s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Dataframes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "#Converting datatype of 1 column\n",
+    "df[\"a\"] = pd.to_numeric(df[\"a\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# to convert all columns of DataFrame\n",
+    "df = df.apply(pd.to_numeric) # convert all columns of DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0    8.0\n",
+       "1    6.0\n",
+       "2    7.5\n",
+       "3    3.0\n",
+       "4    0.9\n",
+       "dtype: float64"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "### Error Handlling\n",
+    "\n",
+    "pd.to_numeric(s, errors='coerce')\n",
+    "\n",
+    "# It will coonvert any error value to NaN"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# Conversion with to_numeric() will give you either a int64 or float64 dtype:\n",
+    "#if you wanted to save some memory and use a more compact dtype, like float32, or int8 then you can downgrad it\n",
+    "\n",
+    "pd.to_numeric(s, downcast='integer')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "#Converting to float value\n",
+    "pd.to_numeric(s, downcast='float')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# convert all DataFrame columns to the int64 dtype\n",
+    "df = df.astype(int)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# convert Series to float16 type\n",
+    "s = s.astype(np.float16)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "# convert Series to categorical type - see docs for more details\n",
+    "s = s.astype('category')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Merging 2 dataframes in Pandas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "pandas.merge(df1, df2, how='left', left_on=['id_key'], right_on=['fk_key'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Sorting values baed on multiple columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "df = df.sort_values(by=['c1','c2'], ascending=[False,True])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Renaming the column names"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "df = df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'})\n",
+    "# Or rename the existing DataFrame (rather than creating a copy) \n",
+    "df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'}, inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Shuffle the list in a significant way"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 3, 6, 1, 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from random import shuffle\n",
+    "a=[1,2,3,4,6]\n",
+    "shuffle(a)\n",
+    "print(a)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Resampling the datasets"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "df.speed.resample() #will be used to resample the speed column of our DataFrame\n",
+    "#The 'W' indicates we want to resample by week. At the bottom of this post is a summary of different time frames.\n",
+    "#mean() is used to indicate we want the mean speed during this period."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "weekly_summary = pd.DataFrame()\n",
+    "weekly_summary['speed'] = df.speed.resample('W').mean()\n",
+    "weekly_summary['distance'] = df.distance.resample('W').sum()\n",
+    "weekly_summary['cumulative_distance'] = df.cumulative_distance.resample('W').last()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "#http://benalexkeen.com/resampling-time-series-data-with-pandas/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### SQRT Code"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "from math import sqrt\n",
+    "\n",
+    "def stddev(lst):\n",
+    "    mean = float(sum(lst)) / len(lst)\n",
+    "    return sqrt(float(reduce(lambda x, y: x + y, map(lambda x: (x - mean) ** 2, lst))) / len(lst))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "### Lambda Function"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h6>lambda operator or lambda function is used for creating small, one-time and anonymous function objects in Python.</h6>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "lambda operator can have any number of arguments, but it can have only one expression.\n",
+    "\n",
+    "eg:\n",
+    "    lambda x, y : x + y "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "Mostly lambda functions are passed as parameters to a function which expects a function objects as parameter like map, reduce, filter functions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h6>map functions expects a function object and any number of iterables like list, dictionary, etc.</h6>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "map(function_object, iterable1, iterable2,...)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "list_a = [1, 2, 3]\n",
+    "list_b = [10, 20, 30]\n",
+    "  \n",
+    "map(lambda x, y: x + y, list_a, list_b) # Output: [11, 22, 33]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "#map function returns an iterator or map object which gets lazily evaluated. \n",
+    "#We can force convert the map output i.e. the map object to list \n",
+    "map_output = map(lambda x: x*2, [1, 2, 3, 4])\n",
+    "print(map_output) # Output: map object: <map object at 0x04D6BAB0>\n",
+    "\n",
+    "list_map_output = list(map_output)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<h6>filter function expects two arguments, function_object and an iterable. function_object returns a boolean value.</h6>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "function_object is called for each element of the iterable and \n",
+    "filter returns only those element for which the function_object returns true."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "Like map function, filter function also returns a list of element. \n",
+    "Unlike map function filter function can only have one iterable as input."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [Root]",
+   "language": "python",
+   "name": "Python [Root]"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
