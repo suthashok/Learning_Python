@@ -1,0 +1,23 @@
+ 2025-09-26 17:06:30,842 -  DEBUG -  Start of the Program
+ 2025-09-26 17:06:32,981 -  DEBUG -  Start of factorial(5)
+ 2025-09-26 17:06:32,981 -  DEBUG -  i is 1, total is 1
+ 2025-09-26 17:06:32,982 -  DEBUG -  i is 2, total is 2
+ 2025-09-26 17:06:32,982 -  DEBUG -  i is 3, total is 6
+ 2025-09-26 17:06:32,982 -  DEBUG -  i is 4, total is 24
+ 2025-09-26 17:06:32,982 -  DEBUG -  i is 5, total is 120
+ 2025-09-26 17:06:32,982 -  DEBUG -  End of factorial(5)
+ 2025-09-26 17:06:32,983 -  DEBUG -  End of program
+ 2025-09-26 18:18:03,770 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-26 18:18:03,787 -  WARNING -  No such comm: 25bb5a97-5680-42ce-86fd-f1314b7aa330
+ 2025-09-27 11:40:16,425 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-27 11:40:16,425 -  WARNING -  No such comm: fe8b3209-a1f8-45e4-bc82-08226dcfd9ad
+ 2025-09-27 14:21:15,708 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-27 14:21:15,714 -  WARNING -  No such comm: 2bcb479b-9677-46b6-bae8-f7c3b3603818
+ 2025-09-28 11:37:51,533 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-28 11:37:51,538 -  WARNING -  No such comm: c86186b9-5fe6-4865-b324-84ff53913af5
+ 2025-09-28 12:26:03,444 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-28 12:26:03,447 -  WARNING -  No such comm: 04b3b38e-f2b8-4a29-bdcd-ce01ff53ffe4
+ 2025-09-28 18:04:46,158 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-28 18:04:46,162 -  WARNING -  No such comm: 05599ccf-713e-4f3a-b426-ef9c91ec7735
+ 2025-09-28 19:31:49,052 -  ERROR -  No such comm target registered: jupyter.widget.control
+ 2025-09-28 19:31:49,060 -  WARNING -  No such comm: 7af40d0f-cce1-4cad-8e5c-9233c78d5083
